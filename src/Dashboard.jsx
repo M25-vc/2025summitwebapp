@@ -1110,7 +1110,7 @@ export default function Dashboard({ user }) {
                 <div className="text-gray-500">Loading your schedule...</div>
               </div>
             ) : (
-              <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pt-0 pb-20">
+              <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pt-0 pb-24">
                 {summitDayTab === 2 ? (
                   <>
                     {/* Static location note for Founder Summit */}
@@ -1184,13 +1184,13 @@ export default function Dashboard({ user }) {
           </div>
         )}
         {activeTab === 'profile' && (
-          <div className="flex flex-col h-full px-4 text-left relative overflow-y-auto pb-20">
+          <div className="flex flex-col h-full px-4 text-left relative overflow-y-auto pb-24">
             <ProfileUpdate user={user} impersonatedUser={impersonatedUser} />
           </div>
         )}
         {activeTab === 'info' && (
           <div className="flex flex-col h-full px-4 text-left relative overflow-y-auto font-sans">
-            <div className="space-y-6 w-full max-w-sm mx-auto pb-20">
+            <div className="space-y-6 w-full max-w-sm mx-auto pb-24">
               {/* Venue Information */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
@@ -1356,7 +1356,7 @@ export default function Dashboard({ user }) {
         )}
       </div>
       {/* Bottom Tab Bar - Optimized for Mobile */}
-      <div className="fixed bottom-0 left-0 w-full max-w-md mx-auto z-40 bg-white border-t flex justify-between px-1 py-1">
+      <div className="bottom-nav fixed bottom-0 left-0 w-full max-w-md mx-auto z-40 bg-white border-t flex justify-between px-1 py-1">
         {TABS.map(tab => {
           const Icon = tab.icon;
           const isActive = activeTab === tab.key;
@@ -1477,7 +1477,7 @@ function AttendeeTabs() {
           </button>
         ))}
       </div>
-      <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pb-20">
+      <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pb-24">
         {loading ? (
           <div className="text-center text-gray-500">Loading attendees...</div>
         ) : error ? (

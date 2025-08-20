@@ -23,6 +23,25 @@ html, body {
   flex-direction: column;
 }
 
+/* Bottom navigation bar styling and height */
+.bottom-nav {
+  height: 64px; /* Consistent height for bottom nav */
+  min-height: 64px;
+  flex-shrink: 0;
+}
+
+/* Safe area for mobile devices */
+@supports (padding: max(0px)) {
+  .bottom-nav {
+    padding-bottom: max(16px, env(safe-area-inset-bottom));
+  }
+}
+
+/* Content areas should have bottom padding to account for bottom nav */
+.content-area {
+  padding-bottom: 96px; /* 64px nav height + 32px extra spacing */
+}
+
 /* Prevent Safari from auto-zooming on input fields */
 input[type="text"],
 input[type="email"],

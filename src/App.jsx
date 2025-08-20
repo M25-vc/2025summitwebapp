@@ -133,13 +133,7 @@ function App() {
   
   return (
     <div>
-      {showDebug && <AuthDebug />}
       {user ? <Dashboard user={user} /> : <Login />}
-      {!showDebug && (
-        <div className="fixed bottom-4 right-4 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm opacity-70">
-          Press Ctrl+D to toggle debug panel
-        </div>
-      )}
     </div>
   );
 }

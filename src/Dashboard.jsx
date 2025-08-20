@@ -197,7 +197,7 @@ const FOUNDER_SUMMIT_SCHEDULE = [
   {
     startTime: '10:30am',
     endTime: '11:15am',
-    title: '<u>Speaker</u> <br/><span style="font-weight: 400;">Jonathan Poma (Loop)</span>',
+    title: '<u>How Not to Build a Soft-Ass Company</u> <br/><span style="font-weight: 400;">Jonathan Poma (Loop)</span>',
     color: 'bg-summitblue border-l-4 border-blue-200',
   },
   {
@@ -209,7 +209,7 @@ const FOUNDER_SUMMIT_SCHEDULE = [
   {
     startTime: '11:20pm',
     endTime: '12:05pm',
-    title: '<u>Speaker</u> <br/><span style="font-weight: 400;">Jeff Courter (Waldo)</span>',
+    title: '<u>7 Sins of a First Time Founder</u> <br/><span style="font-weight: 400;">Jeff Courter (Waldo)</span>',
     color: 'bg-summitblue border-l-4 border-blue-200',
   },
   {
@@ -227,7 +227,7 @@ const FOUNDER_SUMMIT_SCHEDULE = [
   {
     startTime: '12:10pm',
     endTime: '12:55pm',
-    title: '<u>Speaker</u> <br/><span style="font-weight: 400;">Arik Gensler (Benji)</span>',
+    title: '<u>0->1 : Then and Now. Launching a startup with an (almost) non-human team in 2025</u> <br/><span style="font-weight: 400;">Arik Gensler (Benji)</span>',
     color: 'bg-summitblue border-l-4 border-blue-200',
   },
   {
@@ -239,7 +239,7 @@ const FOUNDER_SUMMIT_SCHEDULE = [
   {
     startTime: '1:00pm',
     endTime: '1:45pm',
-    title: '<u>Speaker</u> <br/><span style="font-weight: 400;">Rick Knudston (Workshop)</span>',
+    title: '<u>Sprinting to $10M ARR: The 3 Phases of Growth</u> <br/><span style="font-weight: 400;">Rick Knudston (Workshop)</span>',
     color: 'bg-summitblue border-l-4 border-blue-200',
   },
   {

@@ -1461,7 +1461,7 @@ function AttendeeTabs() {
         <input
           type="text"
           placeholder="Search"
-          className="flex-1 px-3 py-2 border rounded text-sm"
+          className="flex-1 px-3 py-2 border rounded text-base"
           value={attendeeSearch}
           onChange={e => setAttendeeSearch(e.target.value)}
         />

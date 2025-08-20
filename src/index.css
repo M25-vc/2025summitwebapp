@@ -37,9 +37,16 @@ html, body {
   }
 }
 
-/* Content areas should have bottom padding to account for bottom nav */
+/* Content areas should have generous bottom padding to account for bottom navigation */
 .content-area {
-  padding-bottom: 96px; /* 64px nav height + 32px extra spacing */
+  padding-bottom: 128px !important; /* 128px = 8rem = pb-32 */
+}
+
+/* Additional generous padding for mobile devices */
+@media screen and (max-width: 768px) {
+  .content-area {
+    padding-bottom: 144px !important; /* Even more padding on mobile */
+  }
 }
 
 /* Prevent Safari from auto-zooming on input fields */
@@ -73,11 +80,6 @@ select {
   textarea,
   select {
     font-size: 16px !important;
-    /* Force hardware acceleration and prevent zoom */
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-perspective: 1000;
-    perspective: 1000;
   }
 }
 
@@ -91,17 +93,22 @@ select {
   input[type="url"],
   textarea,
   select {
-    font-size: 16px !important;
-    /* iOS Safari specific */
     -webkit-text-size-adjust: 100%;
     text-size-adjust: 100%;
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    -webkit-perspective: 1000;
+    perspective: 1000;
   }
 }
 
-/* Additional zoom prevention for all form elements */
-input:focus,
+/* Focus state zoom prevention */
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="url"]:focus,
 textarea:focus,
 select:focus {
   -webkit-transform: translate3d(0, 0, 0);

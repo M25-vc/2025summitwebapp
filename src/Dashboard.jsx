@@ -88,7 +88,7 @@ function formatCompanyUrl(url) {
 }
 
 const TABS = [
-  { key: 'personal', label: 'My Schedule', icon: CalendarIcon },
+  // { key: 'personal', label: 'My Schedule', icon: CalendarIcon }, // Temporarily commented out
   { key: 'summit', label: 'Event Schedule', icon: ListBulletIcon },
   { key: 'attendee', label: 'Attendee Info', icon: UserCircleIcon },
   { key: 'info', label: 'Additional Info', icon: InformationCircleIcon },
@@ -891,7 +891,7 @@ function ProfileUpdate({ user, impersonatedUser }) {
 }
 
 export default function Dashboard({ user }) {
-  const [activeTab, setActiveTab] = useState('personal');
+  const [activeTab, setActiveTab] = useState('summit'); // Changed from 'personal' since My Schedule is temporarily disabled
   const [summitDayTab, setSummitDayTab] = useState(0); // 0: first date, 1: second date, 2: founder summit
   const [attendeeSearch, setAttendeeSearch] = useState('');
   const [showAdmin, setShowAdmin] = useState(false);
@@ -1063,6 +1063,7 @@ export default function Dashboard({ user }) {
       </div>
       {/* Main content - fills the gap and scrolls */}
       <div className="flex-1 flex flex-col min-h-0 overflow-y-auto px-2 sm:px-6 py-2 pt-24 sm:pt-28 pb-16">
+        {/* Temporarily commented out My Schedule component
         {activeTab === 'personal' && (
           <div className="flex flex-col h-full">
             <div className="flex-1 min-h-0">
@@ -1072,6 +1073,7 @@ export default function Dashboard({ user }) {
             </div>
           </div>
         )}
+        */}
         {activeTab === 'summit' && (
           <div className="flex flex-col h-full">
             {/* Date sub-tabs */}

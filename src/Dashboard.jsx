@@ -1026,7 +1026,7 @@ export default function Dashboard({ user }) {
   }
 
   return (
-    <div className="flex flex-col h-screen bg-gray-50 px-2 sm:px-4 font-sans">
+    <div className="app-container flex flex-col h-screen bg-gray-50 px-2 sm:px-4 font-sans">
       <div className="fixed top-0 left-0 w-full z-30 bg-white rounded shadow-md max-w-md flex flex-col text-center mx-auto p-2 sm:p-6 pb-0 sm:pb-0 flex-shrink-0" style={{ left: '50%', transform: 'translateX(-50%)' }}>
         <img src="/ClubM25Summit.png" alt="Club M25 Summit" className="max-h-12 sm:max-h-16 w-auto mx-auto mb-2 sm:mb-4 object-contain" />
         {/* Admin Button */}
@@ -1062,7 +1062,7 @@ export default function Dashboard({ user }) {
         )}
       </div>
       {/* Main content - fills the gap and scrolls */}
-      <div className="flex-1 flex flex-col min-h-0 overflow-y-auto px-2 sm:px-6 py-2 pt-24 sm:pt-28 pb-16">
+      <div className="flex-1 flex flex-col min-h-0 overflow-hidden px-2 sm:px-6 py-2 pt-24 sm:pt-28">
         {/* Temporarily commented out My Schedule component
         {activeTab === 'personal' && (
           <div className="flex flex-col h-full">
@@ -1075,7 +1075,7 @@ export default function Dashboard({ user }) {
         )}
         */}
         {activeTab === 'summit' && (
-          <div className="flex flex-col h-full">
+          <div className="flex flex-col h-full overflow-hidden">
             {/* Date sub-tabs */}
             <div className="flex justify-center space-x-2 my-2">
               {SUMMIT_SCHEDULE.map((day, idx) => (
@@ -1110,7 +1110,7 @@ export default function Dashboard({ user }) {
                 <div className="text-gray-500">Loading your schedule...</div>
               </div>
             ) : (
-              <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pt-0 pb-8">
+              <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pt-0 pb-20">
                 {summitDayTab === 2 ? (
                   <>
                     {/* Static location note for Founder Summit */}
@@ -1184,13 +1184,13 @@ export default function Dashboard({ user }) {
           </div>
         )}
         {activeTab === 'profile' && (
-          <div className="flex flex-col h-full px-4 text-left relative overflow-y-auto pb-12">
+          <div className="flex flex-col h-full px-4 text-left relative overflow-y-auto pb-20">
             <ProfileUpdate user={user} impersonatedUser={impersonatedUser} />
           </div>
         )}
         {activeTab === 'info' && (
           <div className="flex flex-col h-full px-4 text-left relative overflow-y-auto font-sans">
-            <div className="space-y-6 w-full max-w-sm mx-auto pb-16">
+            <div className="space-y-6 w-full max-w-sm mx-auto pb-20">
               {/* Venue Information */}
               <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-4">
                 <h3 className="text-lg font-semibold text-gray-900 mb-3 flex items-center">
@@ -1477,7 +1477,7 @@ function AttendeeTabs() {
           </button>
         ))}
       </div>
-      <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pb-2">
+      <div className="flex-1 min-h-0 overflow-y-auto space-y-4 pb-20">
         {loading ? (
           <div className="text-center text-gray-500">Loading attendees...</div>
         ) : error ? (

@@ -1206,15 +1206,19 @@ export default function Dashboard({ user }) {
                   </div>
                   <div className="flex items-center">
                     <div className="flex-shrink-0 w-20 text-sm font-medium text-gray-600">44th Floor:</div>
-                    <div className="text-sm text-gray-900">Registration, Casual Networking, Sponsors, Workspace</div>
+                    <div className="text-sm text-gray-900">Registration, Sponsors, Casual Networking, Workspace</div>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="flex-shrink-0 w-20 text-sm font-medium text-gray-600">44th Floor Wi-Fi:</div>
+                    <div className="text-sm text-gray-900">NT_Guest</div>
                   </div>
                   <div className="flex items-center">
                     <div className="flex-shrink-0 w-20 text-sm font-medium text-gray-600">3rd Floor:</div>
                     <div className="text-sm text-gray-900">1:1 Meetings</div>
                   </div>
                   <div className="flex items-center">
-                    <div className="flex-shrink-0 w-20 text-sm font-medium text-gray-600">Wi-Fi:</div>
-                    <div className="text-sm text-gray-900">NT-Guest</div>
+                    <div className="flex-shrink-0 w-20 text-sm font-medium text-gray-600">3rd Floor Wi-Fi:</div>
+                    <div className="text-sm text-gray-900">333 Conference Center (PW: Conference-Room)</div>
                   </div>
                 </div>
               </div>

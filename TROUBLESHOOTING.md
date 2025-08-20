@@ -168,3 +168,4 @@ If the problem persists:
 - [ ] Test in incognito mode
 - [ ] Check console for errors
 - [ ] Use debug panel to inspect state
+

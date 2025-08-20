@@ -15,6 +15,11 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  /* Additional Safari-specific zoom prevention */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Ensure proper scaling on mobile devices */
@@ -28,5 +33,39 @@ select {
   textarea,
   select {
     font-size: 16px !important;
+    /* Force hardware acceleration and prevent zoom */
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-perspective: 1000;
+    perspective: 1000;
   }
+}
+
+/* Safari-specific zoom prevention */
+@supports (-webkit-touch-callout: none) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  select {
+    font-size: 16px !important;
+    /* iOS Safari specific */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Additional zoom prevention for all form elements */
+input:focus,
+textarea:focus,
+select:focus {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }

@@ -64,7 +64,7 @@ export default function Login() {
     const { error } = await supabase.auth.signInWithOtp({ 
       email: selectedAttendee.email,
       options: {
-        emailRedirectTo: window.location.origin
+        emailRedirectTo: `${window.location.origin}${window.location.pathname}`
       }
     });
 

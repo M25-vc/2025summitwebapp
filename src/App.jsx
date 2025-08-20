@@ -23,21 +23,21 @@ function App() {
       const refreshToken = urlParams.get('refresh_token');
       const error = urlParams.get('error');
       
+      // If we have tokens in the URL, let Supabase handle them
       if (accessToken || refreshToken) {
         console.log('🔧 Found auth tokens in URL, processing...');
         console.log('🔧 Access token present:', !!accessToken);
         console.log('🔧 Refresh token present:', !!refreshToken);
         
-        // When tokens are in URL, Supabase will automatically process them
-        // We need to wait for the session to be established
-        console.log('🔧 Waiting for Supabase to process magic link...');
+        // Set a flag to indicate we're processing a magic link
+        let processingMagicLink = true;
         
         // Wait for Supabase to process the magic link and establish session
         let attempts = 0;
-        const maxAttempts = 10;
+        const maxAttempts = 20; // Increased attempts
         
-        while (attempts < maxAttempts) {
-          await new Promise(resolve => setTimeout(resolve, 200));
+        while (processingMagicLink && attempts < maxAttempts) {
+          await new Promise(resolve => setTimeout(resolve, 300)); // Increased delay
           
           const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
           if (sessionError) {
@@ -57,6 +57,7 @@ function App() {
               console.log('🔧 Cleaned up URL parameters');
             }
             
+            processingMagicLink = false;
             return;
           }
           
@@ -64,12 +65,16 @@ function App() {
           console.log(`🔧 Attempt ${attempts}: Waiting for session...`);
         }
         
-        console.log('🔧 Magic link processing timeout - no session established');
-        console.log('🔧 This might indicate an issue with the magic link or Supabase configuration');
+        if (processingMagicLink) {
+          console.log('🔧 Magic link processing timeout - no session established');
+          console.log('🔧 This might indicate an issue with the magic link or Supabase configuration');
+        }
       }
       
       if (error) {
         console.error('🔧 Auth error in URL:', error);
+        setLoading(false);
+        return;
       }
       
       // Get the current session after potential magic link processing
@@ -101,6 +106,16 @@ function App() {
         console.log('🔧 User signed in or token refreshed:', session?.user?.email);
         setUser(session?.user ?? null);
         setLoading(false);
+        
+        // Clean up URL parameters if they exist
+        if (window.history && window.history.replaceState) {
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.get('access_token') || urlParams.get('refresh_token')) {
+            const cleanUrl = window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
+            console.log('🔧 Cleaned up URL parameters after auth state change');
+          }
+        }
       } else if (event === 'SIGNED_OUT') {
         console.log('🔧 User signed out');
         setUser(null);

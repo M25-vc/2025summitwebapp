@@ -16,7 +16,10 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
     persistSession: true,
     detectSessionInUrl: true,
     flowType: 'pkce',
-    debug: import.meta.env.DEV
+    debug: import.meta.env.DEV,
+    onAuthStateChange: (event, session) => {
+      console.log('🔧 Supabase auth state change:', event, session?.user?.email);
+    }
   }
 });
 

@@ -64,7 +64,7 @@ export default function Login() {
     const { error } = await supabase.auth.signInWithOtp({ 
       email: selectedAttendee.email,
       options: {
-        emailRedirectTo: `${window.location.origin}${window.location.pathname}`
+        emailRedirectTo: `${window.location.origin}/`
       }
     });
 
@@ -101,38 +101,43 @@ export default function Login() {
         />
       </div>
 
-      {loading && (
-        <div className="mt-4 text-center text-gray-500">
-          Loading attendees...
-        </div>
-      )}
-
-      {message && (
-        <div className="mt-4 p-3 bg-red-100 border border-red-300 rounded-lg text-red-700 text-sm">
-          {message}
-        </div>
-      )}
-
-      {searchQuery && !loading && (
-        <div className="mt-4 max-h-64 overflow-y-auto">
-          {filteredAttendees.length === 0 ? (
+      {/* Dynamic dropdown area that grows/shrinks as needed */}
+      {(loading || message || (searchQuery && !loading)) && (
+        <div className="mt-4">
+          {loading && (
             <div className="text-center text-gray-500 py-4">
-              No attendees found matching "{searchQuery}"
+              Loading attendees...
             </div>
-          ) : (
-            <div className="space-y-2">
-              {filteredAttendees.map((attendee, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleAttendeeSelect(attendee)}
-                  className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
-                >
-                  <div className="font-semibold text-gray-900">{attendee.name}</div>
-                  {attendee.firm && (
-                    <div className="text-sm text-gray-600">{attendee.firm}</div>
-                  )}
-                </button>
-              ))}
+          )}
+
+          {message && (
+            <div className="p-3 bg-red-100 border border-red-300 rounded-lg text-red-700 text-sm mb-2">
+              {message}
+            </div>
+          )}
+
+          {searchQuery && !loading && (
+            <div className="max-h-64 overflow-y-auto">
+              {filteredAttendees.length === 0 ? (
+                <div className="text-center text-gray-500 py-4">
+                  No attendees found matching "{searchQuery}"
+                </div>
+              ) : (
+                <div className="space-y-2">
+                  {filteredAttendees.map((attendee, index) => (
+                    <button
+                      key={index}
+                      onClick={() => handleAttendeeSelect(attendee)}
+                      className="w-full text-left p-3 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
+                    >
+                      <div className="font-semibold text-gray-900">{attendee.name}</div>
+                      {attendee.firm && (
+                        <div className="text-sm text-gray-600">{attendee.firm}</div>
+                      )}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           )}
         </div>
@@ -194,9 +199,18 @@ export default function Login() {
         <div className="text-xl font-bold text-gray-900 mb-2">
           Magic Link Sent!
         </div>
-        <div className="text-gray-600 mb-6">
+        <div className="text-gray-600 mb-4">
           Check your email at <span className="font-medium">{selectedAttendee?.email}</span> for the login link.
         </div>
+        
+        {/* Private browser warning */}
+        <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-3 mb-4 text-sm">
+          <div className="font-medium text-yellow-800 mb-1">💡 Private Browser Tip</div>
+          <div className="text-yellow-700">
+            If you're using a private/incognito browser, keep this window open after clicking the magic link to maintain your session.
+          </div>
+        </div>
+        
         <button
           onClick={handleBack}
           className="bg-pennyblue text-white py-2 px-6 rounded-lg border border-pennyblue shadow-md hover:bg-blue-100 hover:text-pennyblue transition font-semibold"

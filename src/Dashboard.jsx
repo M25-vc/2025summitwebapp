@@ -915,11 +915,10 @@ export default function Dashboard({ user }) {
   // Check if user is admin (you can customize this logic)
   useEffect(() => {
     const checkAdminStatus = async () => {
-      // For now, let's check if the user's email is in a list of admin emails
-      // You can modify this to check against a database table or user role
+      // Single admin list with full visibility and impersonation rights
       const adminEmails = [
-        'arianna@m25vc.com',
         'sam@m25vc.com',
+        'arianna@m25vc.com',
         'events@m25vc.com',
         'abhinaya@m25vc.com',
         'victor@m25vc.com',

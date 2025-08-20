@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import Login from './Login';
 import Dashboard from './Dashboard';
+import AuthDebug from './AuthDebug';
 import { supabase } from './supabaseClient';
 
 function App() {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [showDebug, setShowDebug] = useState(false);
 
   useEffect(() => {
     // Handle auth callback from magic link
@@ -115,11 +117,29 @@ function App() {
     };
   }, []);
 
+  // Add keyboard shortcut to toggle debug panel
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      if (event.ctrlKey && event.key === 'd') {
+        setShowDebug(!showDebug);
+      }
+    };
+    
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, [showDebug]);
+
   if (loading) return <div className="flex items-center justify-center min-h-screen">Loading...</div>;
   
   return (
     <div>
+      {showDebug && <AuthDebug />}
       {user ? <Dashboard user={user} /> : <Login />}
+      {!showDebug && (
+        <div className="fixed bottom-4 right-4 bg-gray-800 text-white px-3 py-2 rounded-lg text-sm opacity-70">
+          Press Ctrl+D to toggle debug panel
+        </div>
+      )}
     </div>
   );
 }

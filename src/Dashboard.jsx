@@ -921,6 +921,12 @@ export default function Dashboard({ user }) {
         'arianna@m25vc.com',
         'sam@m25vc.com',
         'events@m25vc.com',
+        'abhinaya@m25vc.com',
+        'victor@m25vc.com',
+        'mike@m25vc.com',
+        'katie@m25vc.com',
+        'ruth@m25vc.com',
+        'marco@m25vc.com'
         // Add more admin emails as needed
       ];
       
